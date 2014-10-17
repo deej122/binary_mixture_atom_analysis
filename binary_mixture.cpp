@@ -8,13 +8,17 @@ using namespace std;
 //generate random number to represent size of matrix
 int N = rand()%12;
 
+//create our vector, V, of known ECI values
+int V[3] = {20, 10, 5};
+
 //this function creates an NxN matrix representing our binary mixture
-//A = 1
-//B = -1
+//sig(A) = 1
+//sig(B) = -1
 
 void binaryMixture()
 {
-	cout << "N: " << N << '\n';
+	cout << "N: " << N << endl;
+	cout << "System: " << endl;
 	//create our matrix
 	int mix[N][N];
 	//columns of size N
@@ -23,7 +27,7 @@ void binaryMixture()
 		//rows of size N
 		for (int j = 0; j < N; j++)
 		{
-			//if atom is a zero, generate random number (-1 or 1) again, until it doesn't equal 0
+			//if sig(atom) is a zero, generate random number again, until it doesn't equal 0 (= -1, 1)
 			do	
 			{
 				mix[i][j] = rand()%3 + (-1);
@@ -48,4 +52,11 @@ int main()
 {
 	//call function to generate random NxN matrix of -1's and 1's
 	binaryMixture();
+
+	//print out ECI values
+	cout << "V: " << endl;
+	for(int i = 0; i < 3; i++)
+	{
+		cout << V[i] << endl;
+	}
 }
