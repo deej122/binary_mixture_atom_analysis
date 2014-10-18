@@ -182,21 +182,27 @@ void binaryMixture()
 				D3 = 0;
 			}
 
+			//NN1 Energies vector
 			first_energies.push_back(V[0]*(A1 + B1 + C1 + D1));
 			// cout << V[0] << "x" << A1 << "+" << B1 << "+" << C1 << "+" << D1 << endl;
+
+			//NN2 Energies vector
 			second_energies.push_back(V[1]*(A2 + B2 + C2 + D2));
 			// cout << V[1] << "x" << A2 << "+" << B2 << "+" << C2 << "+" << D2 << endl;
+
+			//NN3 energies vector
 			third_energies.push_back(V[2]*(A3 + B3 + C3 + D3));
 			// cout << V[2] << "x" << A3 << "+" << B3 << "+" << C3 << "+" << D3 << endl;
 		}
 	}
-	cout << "Energies: " << endl;
 
-	//print out energies vector
+
+	cout << "Energies: " << endl;
 	for(int h = 0; h < N*N; h++)
 	{
+		//calculate total energy
 		total_energies = total_energies + first_energies[h] + second_energies[h] + third_energies[h];
-		//break after each row for structure
+		//print value after every step
 		cout << total_energies << endl;
 	}
 }
