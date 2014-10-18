@@ -142,6 +142,7 @@ void binaryMixture()
 				D1 = 0;
 			}
 
+			//Don't use y+2 (NN3) if out of range
 			if(y != N-1 && y!= N-2)
 			{
 				A3 = mix[x][y+2];
@@ -151,6 +152,7 @@ void binaryMixture()
 				A3 = 0;
 			}
 
+			//Don't use y-2 (NN3) if out of range
 			if(y != 0 && y!= 1)
 			{
 				B3 = mix[x][y-2];
@@ -160,6 +162,7 @@ void binaryMixture()
 				B3 = 0;
 			}
 
+			//Don't use x+2 (NN3) if out of range
 			if(x != N-1 && x != N-2)
 			{
 				C3 = mix[x+2][y];
@@ -169,6 +172,7 @@ void binaryMixture()
 				C3 = 0;
 			}
 
+			//Don't use x-2 (NN3 if out of range)
 			if(x != 0 && x != 1)
 			{
 				D3 = mix[x-2][y];
