@@ -1,15 +1,23 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <vector>
 #include <stdlib.h>
 
 using namespace std;
 
 //generate random number to represent size of matrix
+int A1, B1, C1, D1, A2, B2, C2, D2, A3, B3, C3, D3;
 int N = rand()%12;
+
+int total_energies = 0;
 
 //create our vector, V, of known ECI values
 int V[3] = {20, 10, 5};
+
+vector<int> first_energies;
+vector<int> second_energies;
+vector<int> third_energies;
 
 //this function creates an NxN matrix representing our binary mixture
 //sig(A) = 1
@@ -45,6 +53,147 @@ void binaryMixture()
 		}
 		//break after each row for structure
 		cout << endl;
+	}
+
+	//calculate energies and push them into a vector
+	for(int x = 0; x < N; x ++)
+	{
+		for(int y = 0; y < N; y++)
+		{
+			//Don't use y+1 index if y is last row
+			if(y != N-1)
+			{
+				A1 = mix[x][y+1];
+
+				//Don't use x+1 index if x is also last column
+				if(x != N-1)
+				{
+					A2 = mix[x+1][y+1];
+				}
+				else
+				{
+					A2 = 0;
+				}
+
+				//Don't use x-1 index if x is also first column
+				if(x != 0)
+				{
+					C2 = mix[x-1][y+1];
+				}
+				else
+				{
+					C2 = 0;
+				}
+
+			}
+			else
+			{
+				A1 = 0;
+			}
+
+			//Don't use y-1 index if y is first row
+			if(y != 0)
+			{
+				B1 = mix[x][y-1];
+
+				//Don't use x+1 index if x is also last column
+				if(x != N-1)
+				{
+					B2 = mix[x+1][y-1];
+				}
+				else
+				{
+					B2 = 0;
+				}
+
+				//Don't use x-1 index if x is also first column
+				if(x != 0)
+				{
+					D2 = mix[x-1][y-1];
+				}
+				else
+				{
+					D2 = 0;
+				}
+
+			}
+			else
+			{
+				B1 = 0;
+			}
+
+			//Don't use x+1 index if x is last column
+			if(x != N-1)
+			{
+				C1 = mix[x+1][y];
+			}
+			else
+			{
+				C1 = 0;
+			}
+
+			//Don't use x-1 index if x is first column
+			if(x != 0)
+			{
+				D1 = mix[x-1][y];
+			}
+			else
+			{
+				D1 = 0;
+			}
+
+			if(y != N-1 && y!= N-2)
+			{
+				A3 = mix[x][y+2];
+			}
+			else
+			{
+				A3 = 0;
+			}
+
+			if(y != 0 && y!= 1)
+			{
+				B3 = mix[x][y-2];
+			}
+			else
+			{
+				B3 = 0;
+			}
+
+			if(x != N-1 && x != N-2)
+			{
+				C3 = mix[x+2][y];
+			}
+			else
+			{
+				C3 = 0;
+			}
+
+			if(x != 0 && x != 1)
+			{
+				D3 = mix[x-2][y];
+			}
+			else
+			{
+				D3 = 0;
+			}
+
+			first_energies.push_back(V[0]*(A1 + B1 + C1 + D1));
+			// cout << V[0] << "x" << A1 << "+" << B1 << "+" << C1 << "+" << D1 << endl;
+			second_energies.push_back(V[1]*(A2 + B2 + C2 + D2));
+			// cout << V[1] << "x" << A2 << "+" << B2 << "+" << C2 << "+" << D2 << endl;
+			third_energies.push_back(V[2]*(A3 + B3 + C3 + D3));
+			// cout << V[2] << "x" << A3 << "+" << B3 << "+" << C3 << "+" << D3 << endl;
+		}
+	}
+	cout << "Energies: " << endl;
+
+	//print out energies vector
+	for(int h = 0; h < N*N; h++)
+	{
+		total_energies = total_energies + first_energies[h] + second_energies[h] + third_energies[h];
+		//break after each row for structure
+		cout << total_energies << endl;
 	}
 }
 
