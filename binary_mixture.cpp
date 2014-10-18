@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <ctime>
 #include <vector>
 #include <stdlib.h>
 
@@ -209,6 +210,7 @@ void binaryMixture()
 
 int main()
 {
+	srand ( time(0) );
 	//call function to generate random NxN matrix of -1's and 1's
 	binaryMixture();
 
