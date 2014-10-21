@@ -29,7 +29,17 @@ void binaryMixture()
 	cout << "N: " << N << endl;
 	cout << "System: " << endl;
 	//create our matrix
-	int mix[N][N];
+	//int mix[N][N];
+	// or (best way -> create a vector of vectors):
+	vector<vector<int> > mix(N, vector<int>(N, 0));
+	// or, maybe:
+	// int **mix;
+	// mix = new int* [N];
+	// for(int i = 0; i < N; i++)
+	// {
+	// 	mix[i] = new int [N];
+	// }
+
 	//rows of size N
 	for (int i = 0; i < N; i++)
 	{
