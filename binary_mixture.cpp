@@ -5,6 +5,11 @@
 #include <vector>
 #include <stdlib.h>
 
+//TO DO:
+//JUST CALCULATE TWO NEIGHBORS (IE TOP/BOTTOM) FOR EACH ELEMENT AND THERE WILL BE NO REPEATS
+//SEPARATE INTO MULTIPLE FUNCTIONS FOR REUSABILITY
+//PASSING IN MATRIX TO FUNCTION specify **int
+
 using namespace std;
 
 //generate random number to represent size of matrix
