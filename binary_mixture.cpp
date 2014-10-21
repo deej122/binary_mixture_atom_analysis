@@ -30,10 +30,10 @@ void binaryMixture()
 	cout << "System: " << endl;
 	//create our matrix
 	int mix[N][N];
-	//columns of size N
+	//rows of size N
 	for (int i = 0; i < N; i++)
 	{
-		//rows of size N
+		//columns of size N
 		for (int j = 0; j < N; j++)
 		{
 			//if sig(atom) is a zero, generate random number again, until it doesn't equal 0 (= -1, 1)
@@ -61,12 +61,12 @@ void binaryMixture()
 	{
 		for(int y = 0; y < N; y++)
 		{
-			//Don't use y+1 index if y is last row
+			//Don't use y+1 index if y is last column
 			if(y != N-1)
 			{
 				A1 = mix[x][y+1];
 
-				//Don't use x+1 index if x is also last column
+				//Don't use x+1 index if x is also last row
 				if(x != N-1)
 				{
 					A2 = mix[x+1][y+1];
@@ -76,7 +76,7 @@ void binaryMixture()
 					A2 = 0;
 				}
 
-				//Don't use x-1 index if x is also first column
+				//Don't use x-1 index if x is also first row
 				if(x != 0)
 				{
 					C2 = mix[x-1][y+1];
@@ -92,12 +92,12 @@ void binaryMixture()
 				A1 = 0;
 			}
 
-			//Don't use y-1 index if y is first row
+			//Don't use y-1 index if y is first column
 			if(y != 0)
 			{
 				B1 = mix[x][y-1];
 
-				//Don't use x+1 index if x is also last column
+				//Don't use x+1 index if x is also last row
 				if(x != N-1)
 				{
 					B2 = mix[x+1][y-1];
@@ -107,7 +107,7 @@ void binaryMixture()
 					B2 = 0;
 				}
 
-				//Don't use x-1 index if x is also first column
+				//Don't use x-1 index if x is also first row
 				if(x != 0)
 				{
 					D2 = mix[x-1][y-1];
@@ -123,7 +123,7 @@ void binaryMixture()
 				B1 = 0;
 			}
 
-			//Don't use x+1 index if x is last column
+			//Don't use x+1 index if x is last row
 			if(x != N-1)
 			{
 				C1 = mix[x+1][y];
@@ -133,7 +133,7 @@ void binaryMixture()
 				C1 = 0;
 			}
 
-			//Don't use x-1 index if x is first column
+			//Don't use x-1 index if x is first row
 			if(x != 0)
 			{
 				D1 = mix[x-1][y];
@@ -204,8 +204,9 @@ void binaryMixture()
 		//calculate total energy
 		total_energies = total_energies + first_energies[h] + second_energies[h] + third_energies[h];
 		//print value after every step
-		cout << total_energies << endl;
+		// cout << total_energies << endl;
 	}
+	cout << "Total Energy: " << total_energies << endl;
 }
 
 int main()
